@@ -1,9 +1,10 @@
 import discord
 from urllib.parse import urlparse, parse_qs
 from youtube_transcript_api import YouTubeTranscriptApi
+import openai
 
-
-TOKEN = 'MTEyNjI5NTM4MzQ5NzI2NTE4Mg.G0GTpq.NGtavXCIqe4jGir-QwJRtCwgrMrPTj1u_BtKrQ'
+openai.api_key = "APIKEY"
+TOKEN = 'DISCORDTOKEN'
 
 def getResponse(url):
     # get videoID from link
@@ -12,17 +13,22 @@ def getResponse(url):
     videoId = qsDict.get('v')
     videoId = videoId[0]
 
+
     # uses the videoID to get transcript 
     finalTranscript = [] 
     videoText = YouTubeTranscriptApi.get_transcript(videoId, languages=['en'])
     for words in videoText:
         output = words['text']
         finalTranscript.append(output)
+    summary = str(finalTranscript)
 
-    # I want summary to be the gpt4 summary
-    # not yet implemented
-    summary = finalTranscript
-    return(summary)
+    messages = [{"role": "system", "content": 'You are an extremely advanced summarization assistant. Given a list of strings, I want you to be able to summerize the strings into an informative paragraph with specific examples from the text. Only one paragraph for the response.'},
+                {"role": "user", "content": summary}]
+    
+    gptResponse = openai.ChatCompletion.create(model="gpt-3.5-turbo-0613", messages = messages)
+    summaryResponse = gptResponse["choices"][0]["message"]["content"]
+
+    return(summaryResponse)
 
 async def sendMessage(message, user_message, is_private):
     try:
@@ -35,8 +41,6 @@ async def sendMessage(message, user_message, is_private):
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
-
-
 
 @client.event
 async def on_ready():
@@ -53,10 +57,17 @@ async def on_message(message):
 
     print(f'{username} said: "{user_message}" ({channel})')
 
-    if user_message.startswith('?'):
-        user_message = user_message[1:]
-        await sendMessage(message, user_message, is_private=True)
-    else:
+    valid_command = False
+    user_message = user_message.split()
+
+    if user_message[0] == "$transcribe":
+        valid_command = True
+        user_message = " ".join(user_message[1:])
         await sendMessage(message, user_message, is_private=False)
+
+    elif user_message[0] == "$transcribePM":
+        valid_command = True
+        user_message = " ".join(user_message[1:])
+        await sendMessage(message, user_message, is_private=True)
 
 client.run(TOKEN)
