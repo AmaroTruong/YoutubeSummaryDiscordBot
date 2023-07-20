@@ -48,13 +48,12 @@ The bot has several core functions:
 
 ## Screenshots
 
-<img width="1099" alt="Screenshot 2023-07-06 at 1 56 16 AM" src="https://github.com/AmaroTruong/YoutubeSummaryDiscordBot/assets/137460611/ec2a3ef5-2c0d-4db4-a37e-e3a4268fbdac">
+<img width="1110" alt="Screenshot 2023-07-19 at 10 00 04 PM" src="https://github.com/AmaroTruong/YoutubeSummaryDiscordBot/assets/137460611/b1bf6c93-b54b-4457-b7da-6713313e88d6">
 
-<img width="666" alt="Screenshot 2023-07-06 at 1 58 26 AM" src="https://github.com/AmaroTruong/YoutubeSummaryDiscordBot/assets/137460611/dd46bd01-d6ea-4d11-b4c3-bfbc090a3742">
+<img width="681" alt="Screenshot 2023-07-19 at 10 05 28 PM" src="https://github.com/AmaroTruong/YoutubeSummaryDiscordBot/assets/137460611/57efdfc8-488f-4f55-b307-c36edf587c3f">
 
-<img width="950" alt="Screenshot 2023-07-06 at 1 58 36 AM" src="https://github.com/AmaroTruong/YoutubeSummaryDiscordBot/assets/137460611/587e68a3-4dd8-4df6-9f5b-dfd80f2e58bb">
+<img width="950" alt="Screenshot 2023-07-19 at 10 05 57 PM" src="https://github.com/AmaroTruong/YoutubeSummaryDiscordBot/assets/137460611/a3ad5cae-8bc4-4e63-b0af-8b1dea6c69f9">
 
-<img width="760" alt="Screenshot 2023-07-06 at 1 59 04 AM" src="https://github.com/AmaroTruong/YoutubeSummaryDiscordBot/assets/137460611/e8c726d0-2e48-448d-81be-872b33d9d5aa">
 
 ## How it Works
 
